@@ -1,5 +1,5 @@
 from iebank_api import db
-from datetime import datetime
+from datetime import datetime, timezone
 import string, random
 
 class Account(db.Model):
@@ -9,7 +9,7 @@ class Account(db.Model):
     balance = db.Column(db.Float, nullable=False, default = 0.0)
     currency = db.Column(db.String(1), nullable=False, default="€")
     status = db.Column(db.String(10), nullable=False, default="Active")
-    created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    created_at = db.Column(db.DateTime, nullable=False, default=datetime.now(timezone.utc))
 
     def __repr__(self):
         return '<Event %r>' % self.account_number
