@@ -39,19 +39,19 @@ def get_accounts():
 
 @app.route('/accounts/<int:id>', methods=['GET'])
 def get_account(id):
-    account = Account.query.get(id)
+    account = db.session.get(Account, id)
     return format_account(account)
 
 @app.route('/accounts/<int:id>', methods=['PUT'])
 def update_account(id):
-    account = Account.query.get(id)
+    account = db.session.get(Account, id)
     account.name = request.json['name']
     db.session.commit()
     return format_account(account)
 
 @app.route('/accounts/<int:id>', methods=['DELETE'])
 def delete_account(id):
-    account = Account.query.get(id)
+    account = db.session.get(Account, id)
     db.session.delete(account)
     db.session.commit()
     return format_account(account)
@@ -61,7 +61,7 @@ def format_account(account):
         'id': account.id,
         'name': account.name,
         'account_number': account.account_number,
-        'account_country': account.country,
+        'country': account.country,
         'balance': account.balance,
         'currency': account.currency,
         'status': account.status,
