@@ -11,8 +11,8 @@ permissions:
   id-token: write
 
 env:
-  BACKEND_WEBAPP_DEV: forfaly-be-dev
-  BACKEND_WEBAPP_UAT: forfaly2-be-uat
+  BACKEND_WEBAPP_DEV: forfaly3-be-dev
+  BACKEND_WEBAPP_UAT: forfaly3-be-uat
 
 jobs:
   build:
